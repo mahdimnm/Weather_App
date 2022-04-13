@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Card from "./Card";
+const weatherData = require("./data.json");
 
-function Cards() {
+function Cards({ changeSelectedCity }) {
   const [weeks, setWeeks] = useState([
     "seunday",
     "monday",
@@ -12,11 +13,11 @@ function Cards() {
     "saturday",
   ]);
   return (
-    <>
-      {weeks.map((weekday, key) => (
-        <Card key={key} weekday={weekday} />
+    <div className="card-container">
+      {weatherData.map((weather, key) => (
+        <Card key={key} weather={weather} />
       ))}
-    </>
+    </div>
   );
 }
 

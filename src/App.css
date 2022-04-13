@@ -5,9 +5,14 @@
   outline: 0;
 }
 
-#root {
+body {
+  background-image: url("./assets/background.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container{
   margin: 20px auto;
-  width: 50%;
-  background-image: "./assets/background.jpeg" center no-repeat;
-  background-color: red;
+  width: 90%;
 }

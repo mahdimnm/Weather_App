@@ -1,0 +1,37 @@
+[
+    {
+        "day": "Monday",
+        "degree": "25",
+        "weather": "sunny"
+    },
+    {
+        "day": "Tuesday",
+        "degree": "20",
+        "weather": "rainy"
+    },
+    {
+        "day": "Wednesday",
+        "degree": "18",
+        "weather": "cloudy"
+    },
+    {
+        "day": "Thursday",
+        "degree": "15",
+        "weather": "snowy"
+    },
+    {
+        "day": "Friday",
+        "degree": "21",
+        "weather": "thunder_with_rain"
+    },
+    {
+        "day": "Saturday",
+        "degree": "28",
+        "weather": "thunder"
+    },
+    {
+        "day": "Sunday",
+        "degree": "25",
+        "weather": "windy"
+    }
+]

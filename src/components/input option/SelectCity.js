@@ -3,7 +3,7 @@ import React from "react";
 function SelectCity({ cities }) {
   return (
     <>
-      <select defaultValue="">
+      <select defaultValue="" className="input-option">
         <option value="" disabled hidden>
           Choose Your City
         </option>

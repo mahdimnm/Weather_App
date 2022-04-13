@@ -3,6 +3,7 @@ import giveCityOfCountry from "../../requests/giveCityOfCountry";
 import giveCountryName from "../../requests/giveCountryName";
 import SelectCity from "./SelectCity";
 import SelectCountry from "./SelectCountry";
+import "./InputCountry.css";
 
 function InputOption() {
   const [countries, setCountries] = useState();
@@ -22,7 +23,7 @@ function InputOption() {
   };
 
   return countries ? (
-    <form>
+    <form className="input-country-container">
       <SelectCountry countries={countries} changeCountry={changeCountry} />
       {selectedCountry ? <SelectCity cities={cities} /> : null}
     </form>

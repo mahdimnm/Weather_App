@@ -1,0 +1,12 @@
+.input-country-container{
+    margin-top: 50px;
+}
+
+.input-option{
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid rgb(224, 146, 0);
+    cursor: pointer;
+    margin-right: 10px;
+}

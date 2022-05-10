@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import giveCityOfCountry from "../../requests/giveCityOfCountry";
-import giveCountryName from "../../requests/giveCountryName";
 import SelectCity from "./SelectCity";
 import SelectCountry from "./SelectCountry";
 import "./InputCountry.css";
@@ -8,9 +7,6 @@ import { connect } from "react-redux";
 import countrySelectedAction from "../../store/actions/CountryRequest/CountrySelectedAction";
 
 function InputOption(props) {
-  const [countries, setCountries] = useState();
-  const [cities, setCities] = useState();
-
   const handleCountryChange = (country) => {
     props.selectCountry(country);
     props.CityNames(country);
@@ -18,7 +14,7 @@ function InputOption(props) {
   return !props.countryLoading ? (
     <form className="input-country-container">
       <SelectCountry handleCountryChange={handleCountryChange} />
-      {props.cities.length > 0 ? <SelectCity cities={cities} /> : null}
+      {props.cities.length > 0 ? <SelectCity /> : null}
       <h1>{props.countryLoading}</h1>
     </form>
   ) : (

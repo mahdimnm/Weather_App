@@ -1,35 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import giveCityOfCountry from "../../requests/giveCityOfCountry";
 import giveCountryName from "../../requests/giveCountryName";
 import SelectCity from "./SelectCity";
 import SelectCountry from "./SelectCountry";
 import "./InputCountry.css";
+import { connect } from "react-redux";
+import countrySelectedAction from "../../store/actions/CountryRequest/CountrySelectedAction";
 
-function InputOption() {
+function InputOption(props) {
   const [countries, setCountries] = useState();
   const [cities, setCities] = useState();
-  const [selectedCountry, setSelectedCountry] = useState();
 
-  useEffect(() => {
-    giveCountryName().then((data) => setCountries(data));
-  }, []);
-
-  useEffect(() => {
-    giveCityOfCountry(selectedCountry).then((data) => setCities(data));
-  }, [selectedCountry]);
-
-  const changeCountry = (e) => {
-    setSelectedCountry(e.target.value);
+  const handleCountryChange = (country) => {
+    props.selectCountry(country);
+    props.CityNames(country);
   };
-
-  return countries ? (
+  return !props.countryLoading ? (
     <form className="input-country-container">
-      <SelectCountry countries={countries} changeCountry={changeCountry} />
-      {selectedCountry ? <SelectCity cities={cities} /> : null}
+      <SelectCountry handleCountryChange={handleCountryChange} />
+      {props.cities.length > 0 ? <SelectCity cities={cities} /> : null}
+      <h1>{props.countryLoading}</h1>
     </form>
   ) : (
     <h2>Loading...</h2>
   );
 }
 
-export default InputOption;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+    countryLoading: state.countrySection.countryLoading,
+    selectedCountry: state.countrySection.selectedCountry,
+    cities: state.citySection.cities,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectCountry: (country) => dispatch(countrySelectedAction(country)),
+    CityNames: (country) => dispatch(giveCityOfCountry(country)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputOption);

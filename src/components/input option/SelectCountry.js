@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import countrySelectedAction from "../../store/actions/CountryRequest/CountrySelectedAction.js";
 
-function SelectCountry({ countries, changeCountry }) {
+function SelectCountry(props) {
   return (
-    <select defaultValue="" onChange={changeCountry} className="input-option">
+    <select
+      defaultValue=""
+      onChange={(e) => props.handleCountryChange(e.target.value)}
+      className="input-option"
+    >
       <option value="" disabled hidden>
         Choose Your Country
       </option>
-      {countries.map((countryObj, key) => {
+      {props.countries.map((countryObj, key) => {
         return (
           <option key={key} value={countryObj.country}>
             {countryObj.country}
@@ -17,4 +23,11 @@ function SelectCountry({ countries, changeCountry }) {
   );
 }
 
-export default SelectCountry;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+    countries: state.countrySection.countries,
+  };
+};
+
+export default connect(mapStateToProps)(SelectCountry);

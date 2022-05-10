@@ -1,17 +1,17 @@
 import React from "react";
 import "./card.css";
 
-function Card({ weather }) {
+function Card(props) {
   return (
     <div className="card">
       <img
-        src={require(`../../assets/weatherLogos/${weather.weather}.png`)}
+        src={require(`../../assets/weatherLogos/${props.weather.weather[0].main}.png`)}
         alt="red"
         className="weather-logo"
       />
-      <h3 className="weather-degree">{weather.degree}&#176;</h3>
+      <h3 className="weather-degree">{props.weather.temp.day}&#176;</h3>
       <div className="weather-day">
-        <p>{weather.day}</p>
+        <p>{props.weather.dt}</p>
       </div>
     </div>
   );
